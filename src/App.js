@@ -9,7 +9,7 @@ function App() {
     <Navbar>
       <NavItem icon="fa fa-phone" />
       <NavItem icon="fa fa-book" />
-      <NavItem icon="fa fa-chevron-circle-down">
+      <NavItem icon="fa fa-chevron-circle-down fa-lg">
         <DropdownMenu />
       </NavItem>
     </Navbar>

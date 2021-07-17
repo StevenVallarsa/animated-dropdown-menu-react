@@ -79,12 +79,17 @@ a {
   position: absolute;
   top: 80px;
   width: 300px;
-  transform: translateX(-45%);
+  transform: translateX(-43%);
   background-color: var(--bg);
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 1rem;
   overflow: hidden;
+  transition: height var(--speed) ease;
+}
+
+.menu {
+  width: 100%;
 }
 
 .menu-item {
@@ -97,9 +102,48 @@ a {
 }
 
 .menu-item:hover {
-  filter: brightness(1.2);
+  background-color: #0d860d;
 }
+
+.menu-item .icon-button {
+  margin-right: 0.5rem;
+}
+
+.menu-item .icon-button:hover {
+  filter: none;
+}
+
 
 .icon-right {
   margin-left: auto;
+}
+
+.menu-primary-enter {
+ position: absolute;
+ transform: translateX(-110%);
+}
+.menu-primary-enter-active{
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-primary-exit {
+ position: absolute;
+}
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-enter {
+ transform: translateX(110%);
+}
+.menu-secondary-enter-active{
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-secondary-exit {
+}
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
 }
