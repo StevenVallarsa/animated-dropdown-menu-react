@@ -1,9 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
 function DropdownMenu() {
   const [activeMenu, setActiveMenu] = useState("main");
+  const [menuHeight, setMenuHeight] = useState(null);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
+  }, []);
+
+  function calculateHeight(e) {
+    const height = e.offsetHeight;
+    setMenuHeight(height);
+  }
 
   function DropdownItem(props) {
     return (
@@ -24,12 +35,13 @@ function DropdownMenu() {
   }
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" style={{ height: menuHeight }}>
       <CSSTransition
         in={activeMenu === "main"}
         unmountOnExit
         timeout={500}
-        className="menu-primary"
+        classNames="menu-primary"
+        onEnter={calculateHeight}
       >
         <div className="menu">
           <DropdownItem> My Profile</DropdownItem>
@@ -45,13 +57,18 @@ function DropdownMenu() {
         in={activeMenu === "settings"}
         unmountOnExit
         timeout={500}
-        className="menu-secondary"
+        classNames="menu-secondary"
       >
         <div className="menu">
           <DropdownItem
             leftIcon="fa fa-chevron-circle-left fa-lg"
             goToMenu="main"
           />
+          <DropdownItem> Settings</DropdownItem>
+          <DropdownItem> Settings</DropdownItem>
+          <DropdownItem> Settings</DropdownItem>
+          <DropdownItem> Settings</DropdownItem>
+          <DropdownItem> Settings</DropdownItem>
           <DropdownItem> Settings</DropdownItem>
         </div>
       </CSSTransition>
